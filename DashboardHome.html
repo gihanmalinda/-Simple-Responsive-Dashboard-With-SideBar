@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="icon" type="image/x-icon" href="indraImmigrationLogo.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;900&display=swap');
+
+        body{
+            font-family: 'Poppins', sans-serif;
+            background:#e1e1e1;
+        }
+
+        .header {
+        background:#fff;
+        box-shadow:0 2px 5px #005EE9;
+        padding: 15px 20px;
+        width:100%;
+        position:fixed;
+        top:0;
+        left:0;
+        z-index:9;
+        }
+
+        .header .header_in img{
+            margin-bottom: -11px;
+            margin-left: 10px;
+        }
+
+        .header .header_in .profileImage{
+            float: right;
+            width: 40px;
+            margin-right: 50px;
+        }
+
+        button {
+        background:transparent;
+        border:none;
+        width:30px;
+        height:30px;
+        cursor:pointer; 
+        outline:0;
+        }
+
+        .toggle span {
+        width:100%;
+        height:3px;
+        background:#005EE9;
+        display:block;
+        position:relative;
+        cursor:pointer;
+        }
+
+        .toggle span:before,
+        .toggle span:after {
+        content:'';
+        position:absolute;
+        left:0;
+        width:100%;
+        height:100%;
+        background:#005EE9;
+        transition: all 0.3s ease-out;
+        }
+
+        .toggle span:before {
+        top:-8px;
+        }
+
+        .toggle span:after {
+        top:8px;
+        }
+
+        .toggle span.toggle {
+        background:transparent;
+        }
+
+        .toggle span.toggle:before {
+        top:0;
+        transform:rotate(-45deg);
+        background:#005EE9;
+        
+        }
+
+        .toggle span.toggle:after {
+        top:0;
+        transform:rotate(45deg);
+        background:#005EE9;
+        }
+
+        .sidebar {
+        background:#fff;
+        width:235px;
+        position:fixed;
+        top:0;
+        left:-235px;
+        height:100%;
+        box-shadow:0 2px 8px #005EE9;
+        padding-top:90px;
+        transition:all 0.3s ease-out;
+        }
+
+        .sidebar ul {
+        list-style:none;
+        padding-left: 0px;
+        }
+
+        .sidebar ul li {
+        display:block;
+        }
+
+        .sidebar ul li a {
+        padding:8px 15px;
+        font-style: normal;
+        font-size: 26px;
+        font-weight: 400;
+        line-height: 39px;
+        color:#005EE9;
+        text-decoration:none;
+        display:block;
+        position:relative;
+        z-index:1;
+        transition:all 0.3s ease-out;
+        font-weight:500;
+        }
+
+        .sidebar ul li a:before {
+        content:'';
+        position:absolute;
+        bottom:0;
+        left:50%;
+        right:50%;
+        transform:translate(-50%,-50%);
+        width:0;
+        height:1px;
+        background:#4CAF50;
+        z-index:-1;
+        transition:all 0.3s ease-out;
+        }
+
+        .sidebar ul li a:hover:before {
+        width:50%;
+        }
+
+        .sidebar ul li a:hover {
+        color:#4CAF50;
+        }
+
+        .sidebarshow {
+        left:0;
+        }
+
+        .main p{
+            height: 69px;
+            left: 628px;
+            top: 115px;
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 46px;
+            line-height: 69px;
+            color: #005EE9;
+        }
+
+        .cardSet{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            width: 70%;
+        }
+
+        .cardSet .card{
+            box-sizing: border-box;
+            width: 252px;
+            height: 119px;
+            left: 663px;
+            top: 210px;
+            background: #FFFFFF;
+            border: 1px solid #17A94B;
+            box-shadow: 0px 4px 4px #17A94B;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+
+        .cardSet .card .top{
+            width: 211px;
+            height: 33px;
+            left: 683px;
+            top: 218px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 33px;
+            color: #17A94B;
+        }
+
+        .cardSet .card .bottom{
+            margin-top: -30px;
+        }
+
+        .cardSet .card .to{
+            width: 48px;
+            height: 60px;
+            left: 683px;
+            top: 252px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 40px;
+            line-height: 60px;
+            color: #17A94B;
+        }
+
+        .cardSet .card .number{
+            width: 74px;
+            height: 60px;
+            left: 736px;
+            top: 252px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 40px;
+            line-height: 60px;
+            color: #005EE9;
+        }
+
+        .cardSet .card .countries{
+            width: 80px;
+            height: 26px;
+            left: 810px;
+            top: 277px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 26px;
+            color: #17A94B;
+        }
+
+        .cardSet .card:hover{
+            background: #17A94B;
+        }
+
+
+        .cardSet .card:hover *{
+            color: #FFFFFF;
+        }
+
+        .Jounery button{
+            width: 404px;
+            height: 78px;
+            left: 571px;
+            top: 416px;
+            background: #17A94B;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 15px;
+            color: #FFFFFF;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 35px;
+            line-height: 52px;
+            margin-top: 50px;
+        }
+
+        .Jounery button:hover{
+            background: #FFFFFF;
+            color: #17A94B;
+        }
+
+
+        .bottomText{
+            margin-top: 100px;
+        }
+
+
+
+
+
+
+        /* Mobile view width start at 376px*/
+
+        @media (max-width: 900px) {
+            .main p {
+                font-size: 34px;
+            }
+
+            .Jounery button {
+                width: 280px;
+                height: 65px;
+                font-size: 22px;
+            }
+        }
+
+
+
+
+    </style>
+
+
+</head>
+<body>
+    <div class="logoImage">
+        <center><img src="indraImmigrationLogo.png" alt="Indra Immigration Logo" width="200px"></center>
+    </div>
+
+
+
+
+
+
+    <header class="header">
+        <div class="header_in">
+          <button type="button" class="toggle" id="toggle">
+            <span></span>
+           </button>
+            <img src="indraImmigrationLogo.png" alt="Indra Immigration Logo" width="100px">
+            <a href="http://"><img class="profileImage" src="ellipse.png" alt="Indra Immigration Logo"></a>
+       </div>
+     </header>
+     
+     <div class="sidebar" id='sidebar'>
+       <ul>
+            <center><li><a href="">Home</a></li></center>
+            <center><li><a href="">Profile</a></li></center>
+            <center><li><a href="">Logout</a></li></center>
+       </ul>
+     </div>
+
+
+
+
+
+     <div class="main">
+        <center><p>Hello! , Ashen</p></center>
+     </div>
+     <center>
+        <div class="cardSet">
+            <div class="card">
+                <center>
+                    <p class="top">You can immigrate</p>
+                    <div class="bottom">
+                        <span class="to">To</span> <span class="number">200</span> <span class="countries">countries</span>
+                    </div>
+                </center>
+            </div>
+            <div class="card">
+                <center>
+                    <p class="top">You can immigrate</p>
+                    <div class="bottom">
+                        <span class="to">To</span> <span class="number">200</span> <span class="countries">countries</span>
+                    </div>
+                </center>
+            </div>
+            <div class="card">
+                <center>
+                    <p class="top">You can immigrate</p>
+                    <div class="bottom">
+                        <span class="to">To</span> <span class="number">200</span> <span class="countries">countries</span>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </center>
+
+    <div class="Jounery">
+        <center><button type="button">Start Your Jounery</button></center>
+    </div>
+
+
+
+    
+
+    
+    <div class="bottomText">
+        <center><p>by Digisa</p></center>
+    </div>
+
+
+
+
+    <script>
+        var btn = document.querySelector('.toggle');
+        var btnst = true;
+        btn.onclick = function() {
+        if(btnst == true) {
+            document.querySelector('.toggle span').classList.add('toggle');
+            document.getElementById('sidebar').classList.add('sidebarshow');
+            btnst = false;
+        }else if(btnst == false) {
+            document.querySelector('.toggle span').classList.remove('toggle');
+            document.getElementById('sidebar').classList.remove('sidebarshow');
+            btnst = true;
+        }
+        }
+    </script>
+
+
+
+
+    
+</body>
+</html>
